@@ -1,3 +1,1 @@
-from .multiply import mul_peasant
-
-__all__ = ["mul_peasant"]
+from .multiply import mul_peasant  # noqa: F401

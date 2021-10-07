@@ -1,0 +1,50 @@
+---
+
+name: Python
+
+"on":
+  pull_request:
+    branches:
+      - develop
+      - main
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9"]
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Lint with black
+        run: |
+          command -v black 1>/dev/null || pip install black
+          black --check .
+
+      - name: Lint with flake8
+        run: |
+          command -v flake8 1>/dev/null || pip install flake8
+          flake8 .
+
+      - name: Lint with isort
+        run: |
+          command -v isort 1>/dev/null || pip install isort
+          isort --check .
+
+      - name: Type-check with mypy
+        run: |
+          command -v mypy 1>/dev/null || pip install mypy
+          mypy algorithms/
+
+      - name: Tests
+        run: |
+          pipenv install --dev -e .
+          pipenv run pytest
