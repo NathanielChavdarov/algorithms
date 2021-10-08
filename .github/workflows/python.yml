@@ -46,6 +46,6 @@ jobs:
 
       - name: Tests
         run: |
-          command -v pipenv 1>/dev/null || pip install pipenv
+          command -v pipenv 1>/dev/null || sudo apt install pipenv python3-six
           pipenv install --dev -e .
           pipenv run pytest
