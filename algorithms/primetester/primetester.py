@@ -7,7 +7,7 @@ def primetester2(a: int) -> bool:
     i = 5
 
     while i * i <= a:
-        if a % i == 0 or a % (i+2) == 0:
+        if a % i == 0 or a % (i + 2) == 0:
             return False
         i += 6
     return True
