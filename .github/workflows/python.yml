@@ -15,33 +15,57 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.9"]
-    container: python:${{ matrix.python-version }}-alpine
     steps:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Lint with black
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install packages
         run: |
-          command -v black 1>/dev/null || pip install black
-          black --check .
+          sudo apt update
+          sudo env DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends python3-virtualenv pipenv
 
       - name: Lint with flake8
         run: |
-          command -v flake8 1>/dev/null || pip install flake8
+          tmpdir="$(mktemp -d)"
+          venv="$tmpdir/venv"
+          virtualenv "$venv"
+          source "$$venv/bin/activate" && \
+          pip install flake8
           flake8 .
+
+      - name: Lint with black
+        run: |
+          tmpdir="$(mktemp -d)"
+          venv="$tmpdir/venv"
+          virtualenv "$venv"
+          source "$$venv/bin/activate" && \
+          pip install black
+          black --check .
 
       - name: Lint with isort
         run: |
-          command -v isort 1>/dev/null || pip install isort
+          tmpdir="$(mktemp -d)"
+          venv="$tmpdir/venv"
+          virtualenv "$venv"
+          source "$$venv/bin/activate" && \
+          pip install isort
           isort --check .
 
       - name: Type-check with mypy
         run: |
-          command -v mypy 1>/dev/null || pip install mypy
+          tmpdir="$(mktemp -d)"
+          venv="$tmpdir/venv"
+          virtualenv "$venv"
+          source "$$venv/bin/activate" && \
+          pip install mypy
           mypy algorithms/
 
       - name: Tests
         run: |
-          command -v pipenv 1>/dev/null || apt install --no-install-recommends -y pipenv
           pipenv install --dev -e .
           pipenv run pytest
