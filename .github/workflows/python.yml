@@ -27,7 +27,7 @@ jobs:
       - name: Install packages
         run: |
           sudo apt update
-          sudo env DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends python3-virtualenv pipenv
+          sudo env DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends python3-pip python3-virtualenv pipenv
 
       - name: Lint with flake8
         run: |
