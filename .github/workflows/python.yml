@@ -14,15 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.8", "3.9"]
+        python-version: ["3.9"]
+    container: python:${{ python-version }}-alpine
     steps:
       - name: Check out code
         uses: actions/checkout@v2
-
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
 
       - name: Lint with black
         run: |
@@ -46,6 +42,6 @@ jobs:
 
       - name: Tests
         run: |
-          command -v pipenv 1>/dev/null || sudo apt install pipenv python3-six
+          command -v pipenv 1>/dev/null || apt install --no-install-recommends -y pipenv
           pipenv install --dev -e .
           pipenv run pytest
