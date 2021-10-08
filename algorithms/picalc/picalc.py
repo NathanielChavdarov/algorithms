@@ -1,12 +1,12 @@
 def picalc(p: int) -> float:
     counter = 0
     x = 0
-    pp = p*p
-    while x <= p: #
+    pp = p * p
+    while x <= p:  #
         y = 0
-        xx = x*x
+        xx = x * x
         while y <= p:
-            yy = y*y
+            yy = y * y
             d = xx + yy
             if d <= pp:
                 counter += 1

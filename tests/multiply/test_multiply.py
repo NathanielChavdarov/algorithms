@@ -1,5 +1,6 @@
 from algorithms import multiply
 
+
 def test_mul_peasant():
     for a, b, expected in [
         (99, 0, 0),

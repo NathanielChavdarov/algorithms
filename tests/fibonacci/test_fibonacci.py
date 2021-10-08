@@ -1,4 +1,4 @@
-import fibonacci as f
+from algorithms import fib
 
 answers = [
     (0, 0),
@@ -16,4 +16,4 @@ answers = [
 def test_fibonacci():
     # The slow function
     for i, fib_i in answers:
-        assert f.fib(i) == fib_i
+        assert fib(i) == fib_i

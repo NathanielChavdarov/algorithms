@@ -1,16 +1,16 @@
 from typing import Any, List
 
 
-def sort(l: List[Any]) -> List[Any]:
-    if l is None:
-        return l
-    a = len(l)
+def bubble_sort(alist: List[Any]) -> List[Any]:
+    if alist is None:
+        return alist
+    a = len(alist)
     if a <= 1:
-        return l
+        return alist
 
-    for j in range(a-1, 1, -1):
+    for j in range(a - 1, 1, -1):
         for i in range(0, j):
-            if l[i] > l[i+1]:
-                l[i], l[i+1] = l[i+1], l[i]
+            if alist[i] > alist[i + 1]:
+                alist[i], alist[i + 1] = alist[i + 1], alist[i]
 
-    return l
+    return alist
