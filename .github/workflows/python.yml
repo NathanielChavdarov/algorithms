@@ -46,6 +46,6 @@ jobs:
 
       - name: Tests
         run: |
-          command -v mypy 1>/dev/null || sudo apt install pipenv
+          command -v pipenv 1>/dev/null || sudo apt install pipenv
           pipenv install --dev -e .
           pipenv run pytest
