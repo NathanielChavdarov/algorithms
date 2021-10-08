@@ -34,7 +34,7 @@ jobs:
           tmpdir="$(mktemp -d)"
           venv="$tmpdir/venv"
           virtualenv "$venv"
-          source "$$venv/bin/activate" && \
+          source "$venv/bin/activate"
           pip install flake8
           flake8 .
 
@@ -43,7 +43,7 @@ jobs:
           tmpdir="$(mktemp -d)"
           venv="$tmpdir/venv"
           virtualenv "$venv"
-          source "$$venv/bin/activate" && \
+          source "$venv/bin/activate"
           pip install black
           black --check .
 
@@ -52,7 +52,7 @@ jobs:
           tmpdir="$(mktemp -d)"
           venv="$tmpdir/venv"
           virtualenv "$venv"
-          source "$$venv/bin/activate" && \
+          source "$venv/bin/activate"
           pip install isort
           isort --check .
 
@@ -61,7 +61,7 @@ jobs:
           tmpdir="$(mktemp -d)"
           venv="$tmpdir/venv"
           virtualenv "$venv"
-          source "$$venv/bin/activate" && \
+          source "$venv/bin/activate"
           pip install mypy
           mypy algorithms/
 
