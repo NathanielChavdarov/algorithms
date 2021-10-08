@@ -67,5 +67,10 @@ jobs:
 
       - name: Tests
         run: |
-          pipenv install --dev -e .
-          pipenv run pytest
+          tmpdir="$(mktemp -d)"
+          venv="$tmpdir/venv"
+          virtualenv "$venv"
+          source "$venv/bin/activate"
+          pip install pytest
+          pip install -e . # install algorithms
+          run pytest
