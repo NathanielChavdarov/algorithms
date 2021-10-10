@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.8", "3.9"]
+        python-version: ["3.9"]
     steps:
       - name: Check out code
         uses: actions/checkout@v2
@@ -24,27 +24,53 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Lint with black
+      - name: Install packages
         run: |
-          command -v black 1>/dev/null || pip install black
-          black --check .
+          sudo apt update
+          sudo env DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends python3-pip python3-virtualenv pipenv
 
       - name: Lint with flake8
         run: |
-          command -v flake8 1>/dev/null || pip install flake8
+          tmpdir="$(mktemp -d)"
+          venv="$tmpdir/venv"
+          virtualenv "$venv"
+          source "$venv/bin/activate"
+          pip install flake8
           flake8 .
+
+      - name: Lint with black
+        run: |
+          tmpdir="$(mktemp -d)"
+          venv="$tmpdir/venv"
+          virtualenv "$venv"
+          source "$venv/bin/activate"
+          pip install black
+          black --check .
 
       - name: Lint with isort
         run: |
-          command -v isort 1>/dev/null || pip install isort
+          tmpdir="$(mktemp -d)"
+          venv="$tmpdir/venv"
+          virtualenv "$venv"
+          source "$venv/bin/activate"
+          pip install isort
           isort --check .
 
       - name: Type-check with mypy
         run: |
-          command -v mypy 1>/dev/null || pip install mypy
+          tmpdir="$(mktemp -d)"
+          venv="$tmpdir/venv"
+          virtualenv "$venv"
+          source "$venv/bin/activate"
+          pip install mypy
           mypy algorithms/
 
       - name: Tests
         run: |
-          pipenv install --dev -e .
-          pipenv run pytest
+          tmpdir="$(mktemp -d)"
+          venv="$tmpdir/venv"
+          virtualenv "$venv"
+          source "$venv/bin/activate"
+          pip install pytest
+          pip install -e . # install algorithms
+          pytest
