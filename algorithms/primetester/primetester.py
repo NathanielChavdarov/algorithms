@@ -10,4 +10,4 @@ def primetester2(a: int) -> bool:
         if a % i == 0 or a % (i + 2) == 0:
             return False
         i += 6
-    return True
+    return Truyepe
