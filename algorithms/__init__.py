@@ -5,3 +5,4 @@ from .mean import mean  # noqa: F401
 from .picalc import picalc  # noqa: F401
 from .primetester import primetester  # noqa: F401
 from .sqrt import sqrt  # noqa: F401
+from .standard_deviation import standard_deviation  # noqa: F401
