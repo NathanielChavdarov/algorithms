@@ -1,5 +1,5 @@
-from typing import List, Union
 from math import sqrt
+from typing import List, Union
 
 
 def standard_deviation(inlist: List[Union[float, int]]) -> float:
