@@ -18,7 +18,7 @@ max_refactor=0
 max_convention=20
 max_usage=0
 
-if [[ "$fatals" -gt "$max_fatal" || "$fatals" -gt "$max_fatal" || "$errors" -gt "$max_error" || "$warnings" -gt "$max_warning" || "$refactor" -gt "$max_refactor" || "$conventions" -gt "$max_convention" ]] then
+if [[ "$fatals" -gt "$max_fatal" || "$fatals" -gt "$max_fatal" || "$errors" -gt "$max_error" || "$warnings" -gt "$max_warning" || "$refactor" -gt "$max_refactor" || "$conventions" -gt "$max_convention" ]] ; then
     pylint --exit-zero --persistent=no algorithms/
     echo
     echo "Fatal: $fatals (max $max_fatal)"
