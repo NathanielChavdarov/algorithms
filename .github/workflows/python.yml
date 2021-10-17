@@ -63,7 +63,7 @@ jobs:
           virtualenv "$venv"
           source "$venv/bin/activate"
           pip install mypy
-          mypy algorithms .
+          mypy algorithms/ .
 
       - name: Type-check with pylint 
         run: |
@@ -72,7 +72,7 @@ jobs:
           virtualenv "$venv" 
           source "$venv/bin/activate" 
           pip install pylint 
-          pylint algorithms .
+          pylint algorithms/ .
 
       - name: Tests
         run: |
