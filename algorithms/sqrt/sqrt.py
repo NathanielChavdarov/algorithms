@@ -1,7 +1,7 @@
 def sqrt(n: float, precision: int) -> float:
     if n < 0:
         raise ValueError("Cannot find square root of a negative number!")
-    if n == 0 or n == 1:
+    if n in (0, 1):
         return n  # Sqrt of 0 = 0 and sqrt of 1 = 1 so we return the number
 
     if int(n) == n:  # Checks if the input number is an integer
@@ -9,7 +9,7 @@ def sqrt(n: float, precision: int) -> float:
             if i * i == n:
                 # print(f"The number {n} is a square number")
                 return i  # Return the square root of the number
-            elif i * i > n:
+            if i * i > n:
                 break
     if n < 1:
         lbound = n
@@ -21,7 +21,7 @@ def sqrt(n: float, precision: int) -> float:
     while True:
         count += 1
         mpoint = (ubound + lbound) / 2  # Finds the half-way point
-        print(f"lbound = {lbound}, ubound = {ubound}, mpoint = {mpoint}")
+        # print(f"lbound = {lbound}, ubound = {ubound}, mpoint = {mpoint}")
         if mpoint * mpoint > n:
             ubound = mpoint
         elif mpoint * mpoint == n:

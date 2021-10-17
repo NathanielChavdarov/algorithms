@@ -65,7 +65,7 @@ jobs:
           pip install mypy
           mypy algorithms/
 
-      - name: Type-check with pylint 
+      - name: Lint with pylint 
         run: |
           tmpdir="$(mktemp -d)" 
           venv="$tmpdir/venv" 

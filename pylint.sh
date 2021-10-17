@@ -14,8 +14,8 @@ usages="$(jq --arg x usage "$jqcmd" .pylint.json)"
 max_fatal=0
 max_error=0
 max_warning=0
-max_refactor=0
-max_convention=20
+max_refactor=1
+max_convention=60
 max_usage=0
 
 if [[ "$fatals" -gt "$max_fatal" || "$fatals" -gt "$max_fatal" || "$errors" -gt "$max_error" || "$warnings" -gt "$max_warning" || "$refactor" -gt "$max_refactor" || "$conventions" -gt "$max_convention" ]] ; then
