@@ -65,14 +65,14 @@ jobs:
           pip install mypy
           mypy algorithms .
 
-       - name: Type-check with mypy 
-         run: |
-           tmpdir="$(mktemp -d)" 
-           venv="$tmpdir/venv" 
-           virtualenv "$venv" 
-           source "$venv/bin/activate" 
-           pip install pylint 
-           pylint algorithms .
+      - name: Type-check with mypy 
+        run: |
+          tmpdir="$(mktemp -d)" 
+          venv="$tmpdir/venv" 
+          virtualenv "$venv" 
+          source "$venv/bin/activate" 
+          pip install pylint 
+          pylint algorithms .
 
       - name: Tests
         run: |
