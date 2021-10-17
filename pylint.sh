@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Run pylint, collect output as json
-pylint --exit-zero --persistent=no --format json algorithms/ >.pylint.json
+pylint --exit-zero --persistent=no -f json algorithms/ >.pylint.json
 
 jqcmd='[.[]|select(.type==$x)]|length'
 fatals="$(jq --arg x fatal "$jqcmd" .pylint.json)"
@@ -18,7 +18,7 @@ max_refactor=0
 max_convention=20
 max_usage=0
 
-if [[ "$fatals" -gt "$max_fatal" -o "$fatals" -gt "$max_fatal" -o "$errors" -gt "$max_error" -o "$warnings" -gt "$max_warning" -o "$refactor" -gt "$max_refactor" -o "$conventions" -gt "$max_convention" ]] then
+if [[ "$fatals" -gt "$max_fatal" || "$fatals" -gt "$max_fatal" || "$errors" -gt "$max_error" || "$warnings" -gt "$max_warning" || "$refactor" -gt "$max_refactor" || "$conventions" -gt "$max_convention" ]] then
     pylint --exit-zero --persistent=no algorithms/
     echo
     echo "Fatal: $fatals (max $max_fatal)"
