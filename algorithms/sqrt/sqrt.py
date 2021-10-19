@@ -2,7 +2,7 @@ def sqrt(input_num: float, precision: int) -> float:
     if input_num < 0:
         raise ValueError("Cannot find square root of a negative number!")
     if input_num in (0, 1):
-        return input_num  # Sqrt of 0 = 0 and sqrt of 1 = 1 so we return the number
+        return input_num
 
     if int(input_num) == input_num:  # Checks if the input number is an integer
         for i in range(1, int(input_num)):

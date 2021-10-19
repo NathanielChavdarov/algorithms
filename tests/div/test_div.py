@@ -1,3 +1,5 @@
+import pytest
+
 from algorithms import div
 
 
@@ -13,14 +15,11 @@ def test_div():
         (0, 10),
         (100, 100),
     ]:
-        q, m = div.div(a, b)
+        q, m = div(a, b)
         assert q == int(a / b), f"unable to calculate {a}/{b}"
         assert m == a % b, f"unable to calculate {a}%{b}"
 
 
 def test_div_by_zero():
-    try:
-        div.div(1, 0)
-        assert False
-    except ValueError:
-        pass
+    with pytest.raises(ValueError):
+        div(1, 0)
