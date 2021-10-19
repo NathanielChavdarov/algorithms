@@ -1,1 +1,1 @@
-from .factorial import factorial_iterative, factorial_recursive  # noqa: F401
+from .factorial import factorial_iterative  # noqa: F401
