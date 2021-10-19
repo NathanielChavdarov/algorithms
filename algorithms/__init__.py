@@ -1,5 +1,5 @@
 from .bubble_sort import bubble_sort  # noqa: F401
-from .div import div # noqa: F401
+from .div import div  # noqa: F401
 from .factorial import factorial_iterative, factorial_recursive  # noqa: F401
 from .fibonacci import fib  # noqa: F401
 from .mean import mean  # noqa: F401
