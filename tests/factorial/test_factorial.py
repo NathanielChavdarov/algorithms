@@ -4,6 +4,7 @@ import pytest
 
 from algorithms import factorial_iterative
 
+
 def test_factorial_iterative_positive():
     answers = [
         (3, math.factorial(3)),
@@ -16,6 +17,7 @@ def test_factorial_iterative_positive():
     with pytest.raises(ValueError):
         for q, a in answers:
             assert factorial_iterative(q) == a
+
 
 def test_factorial_iterative_negative():
     answers = [
