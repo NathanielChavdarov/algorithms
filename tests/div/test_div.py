@@ -1,3 +1,5 @@
+import pytest
+
 from algorithms import div
 
 
@@ -19,8 +21,5 @@ def test_div():
 
 
 def test_div_by_zero():
-    try:
-        div.div(1, 0)
-        assert False
-    except ValueError:
-        pass
+    with pytest.raises(ValueError):
+        div(1, 0)
