@@ -1,12 +1,12 @@
-def fib(n: int) -> int:
-    if n == 0:
+def fib(fib_number: int) -> int:
+    if fib_number == 0:
         return 0
-    y = 1
-    z = 1
-    x = 2
-    for _ in range(n - 2):
-        y = x
-        x = y + z
-        z = y
+    num_1 = 1
+    num_2 = 1
+    num_3 = 2
+    for _ in range(fib_number - 2):
+        num_1 = num_3
+        num_3 = num_1 + num_2
+        num_2 = num_1
 
-    return z
+    return num_2
