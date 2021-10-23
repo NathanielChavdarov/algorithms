@@ -1,8 +1,6 @@
-import random
 from math import sqrt
 from typing import List, Union
 
-import timeit
 
 def standard_deviation(inlist: List[Union[float, int]]) -> float:
     mean = (sum(inlist) / len(inlist))
